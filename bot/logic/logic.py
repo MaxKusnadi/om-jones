@@ -39,7 +39,7 @@ class Logic(object):
                 sender_id, WELCOME_MESSAGE.format(user.first_name))
 
     def parse_message(self, user, messaging_event):
-        self.fb.send_message_bubble(sender_id)
+        self.fb.send_message_bubble(user.fb_id)
         if "quick_reply" in messaging_event["message"].keys():
             self.process_quick_reply(user.fb_id, messaging_event[
                                      "message"]["quick_reply"]["payload"])
@@ -57,7 +57,7 @@ class Logic(object):
 
     def give_gombalan(self, user):
         self.fb.send_message_text(user.fb_id, GOMBALAN_MESSAGE)
-        self.fb.send_message_bubble()
+        self.fb.send_message_bubble(user.fb_id)
         word = random.choice(GOMBALAN)
         self.fb.send_message_text(user.fb_id, word)
         self.fb.send_message_text(user.fb_id, "Pake tuh mblo")
