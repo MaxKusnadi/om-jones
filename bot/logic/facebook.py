@@ -62,6 +62,8 @@ class Facebook(object):
 
     def send_message_picture(self, origin, target):
         first_name, last_name, gender, pic = self.get_user_data(target.fb_id)
+        self.send_message_text(origin.fb_id, "Nih buat lu mblo, {first_name} {last_name}".format(
+            first_name=first_name, last_name=last_name))
 
         logging.info("sending match for {recipient}".format(
             recipient=origin.fb_id))
@@ -71,7 +73,6 @@ class Facebook(object):
                 "id": origin.fb_id
             },
             "message": {
-                "text": "Nih buat lu mblo, {first_name} {last_name}".format(first_name=first_name, last_name=last_name),
                 "attachment": {
                     "type": "image",
                     "payload": {
