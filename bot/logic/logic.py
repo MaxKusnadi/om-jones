@@ -2,6 +2,7 @@ import logging
 import json
 import os
 import requests
+import random
 
 from bot.constants.messages import *
 from bot.logic.facebook import Facebook
@@ -21,7 +22,6 @@ class Logic(object):
     def parse_messaging_event(self, messaging_event):
         sender_id = messaging_event["sender"]["id"]
         recipient_id = messaging_event["recipient"]["id"]
-        self.fb.send_message_bubble(sender_id)
         user = self.find_user(sender_id)
         if messaging_event.get("message"):  # someone sent us a message
             self.parse_message(user, messaging_event)
@@ -34,10 +34,12 @@ class Logic(object):
 
         # user clicked/tapped "postback" button in earlier message
         if messaging_event.get("postback"):
+            self.fb.send_message_bubble(sender_id)
             self.fb.send_message_text(
                 sender_id, WELCOME_MESSAGE.format(user.first_name))
 
     def parse_message(self, user, messaging_event):
+        self.fb.send_message_bubble(sender_id)
         if "quick_reply" in messaging_event["message"].keys():
             self.process_quick_reply(user.fb_id, messaging_event[
                                      "message"]["quick_reply"]["payload"])
@@ -51,8 +53,14 @@ class Logic(object):
                 if message_text.lower() == "anti jones":
                     self.fb.send_message_text(user.fb_id, "Bentar ya bro")
                 else:
-                    self.fb.send_message_text(
-                        user.fb_id, "Hi, {name}! You can order flower by typing 'order'! ".format(name=user.first_name))
+                    self.give_gombalan(user)
+
+    def give_gombalan(self, user):
+        self.fb.send_message_text(user.fb_id, GOMBALAN_MESSAGE)
+        self.fb.send_message_bubble()
+        word = random.choice(GOMBALAN)
+        self.fb.send_message_text(user.fb_id, word)
+        self.fb.send_message_text(user.fb_id, "Pake tuh mblo")
 
     def process_quick_reply(self, sender_id, payload):
         pass
