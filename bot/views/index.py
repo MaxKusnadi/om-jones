@@ -1,8 +1,11 @@
 import logging
-import os
 
-from flask import request
+
+from flask import request, render_template
 from bot import app
+from bot.logic.logic import Logic
+
+logic = Logic()
 
 
 @app.route('/', methods=['GET'])
@@ -15,3 +18,27 @@ def verify():
         return request.args["hub.challenge"], 200
 
     return "Hello world", 200
+
+
+@app.route('/', methods=['POST'])
+def webhook():
+
+    # endpoint for processing incoming messaging events
+
+    data = request.get_json()
+    # you may not want to log every incoming message in production, but it's
+    # good for testing
+    logging.debug(data)
+
+    if data["object"] == "page":
+
+        for entry in data["entry"]:
+            for messaging_event in entry["messaging"]:
+                logic.parse_messaging_event(messaging_event)
+    return "ok", 200
+
+
+@app.route('/database', methods=['GET'])
+def database():
+    users = logic.get_all_users()
+    return render_template('database.html', users=users)

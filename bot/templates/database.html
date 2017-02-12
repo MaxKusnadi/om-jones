@@ -1,0 +1,24 @@
+<html>
+	<body>
+		<table>
+			<tr>
+				<th> Id </th>
+				<th> FB ID </th>
+				<th> First Name </th>
+				<th> Last Name</th>
+				<th> Gender </th>
+				<th> Authorized? </th>
+			</tr>
+			{% for user in users %}
+			<tr>
+				<td> {{ user.id }} </td>
+				<td> {{ user.fb_id }} </td>
+				<td> {{ user.first_name }} </td>
+				<td> {{ user.last_name }} </td>
+				<td> {{ user.gender }} </td>
+				<td> {{ user.is_authorized }} </td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

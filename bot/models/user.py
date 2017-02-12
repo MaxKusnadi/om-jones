@@ -13,21 +13,15 @@ class User(db.Model):
     gender = Column(String)
     is_authorized = Column(Boolean)
 
-    def __init__(self, fb_id, first_name, last_name, gender, is_authorized=False):
+    def __init__(self, fb_id, first_name, last_name, gender, is_authorized=True):
         self.fb_id = fb_id
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
         self.is_authorized = is_authorized
 
-    def set_first_name(self, first_name):
-        self.first_name = first_name
-
-    def set_last_name(self, last_name):
-        self.last_name = last_name
-
-    def set_authorized(self, authorized):
-        self.is_authorized = authorized
+    def set_authorized(self, value):
+        self.is_authorized = value
 
     def __repr__(self):
         return '<id {} - {} {} Gender: {}>'.format(self.fb_id, self.first_name, self.last_name, self.gender)
