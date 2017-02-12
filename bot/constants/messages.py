@@ -1,6 +1,6 @@
 WELCOME_MESSAGE = "Halo, jombloer {}! Mau Oom cariin jomblo yang cocok buat kamu? Bilang aja 'Anti jones'. Kalo ga kamu bisa dengerin gombalan jomblo dari Om juga"
 LIKE_MESSAGE = "Masa like Om sih {}? Like yang lain dong"
-GOMBALAN_MESSAGE = "Ngomong paan sih lu? Nih gombalan buat lu"
+GOMBALAN_MESSAGE = "Ngomong paan sih lu? Nih gombalan buat lu, mblo."
 NOT_FOUND = "Yah mblo ga ada yang cocok ma lu nih. Tanya Om lagi ntaran aja ya, {}"
 REQUEST_AGAIN = "Bentar ye mblo"
 REQUEST_STOP = "Udahan ya mblo? Kalo mau lanjut bilang 'anti jones' yak {}"

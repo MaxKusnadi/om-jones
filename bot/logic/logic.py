@@ -85,7 +85,6 @@ class Logic(object):
         self.fb.send_message_bubble(user.fb_id)
         word = random.choice(GOMBALAN)
         self.fb.send_message_text(user.fb_id, word)
-        self.fb.send_message_text(user.fb_id, "Pake tuh mblo")
         self.fb.send_message_text(
             user.fb_id, "Kalo mau Om cariin jomblo laen, bilang 'anti jones' yak")
 
