@@ -60,28 +60,34 @@ class Facebook(object):
             logging.info(r.status_code)
             logging.info(r.text)
 
-    def start_order(self, recipient_id):
-        logging.info("starting order for {recipient}".format(
-            recipient=recipient_id))
+    def send_message_picture(self, origin, target):
+        first_name, last_name, gender, pic = self.get_user_data(target.fb_id)
+
+        logging.info("sending match for {recipient}".format(
+            recipient=origin.fb_id))
 
         data = json.dumps({
             "recipient": {
-                "id": recipient_id
+                "id": origin.fb_id
             },
             "message": {
-                "text": "Which flower do you want?",
+                "text": "Nih buat lu mblo, {first_name} {last_name}".format(first_name=first_name, last_name=last_name),
+                "attachment": {
+                    "type": "image",
+                    "payload": {
+                        "url": pic
+                    }
+                },
                 "quick_replies": [
                     {
                         "content_type": "text",
-                        "title": "Packet A",
-                        "payload": "Packet A",
-                        "image_url": "https://cdn.pixabay.com/photo/2013/06/23/19/47/rose-140853_960_720.jpg"
+                        "title": "Lagi dong Om",
+                        "payload": "Yes",
                     },
                     {
                         "content_type": "text",
-                        "title": "Packet B",
-                        "payload": "Packet B",
-                        "image_url": "https://cdn.pixabay.com/photo/2013/05/26/12/14/rose-113735_960_720.jpg"
+                        "title": "Udahan ah",
+                        "payload": "No",
                     }
                 ]
             }

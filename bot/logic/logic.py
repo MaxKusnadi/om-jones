@@ -6,6 +6,7 @@ import random
 
 from bot.constants.messages import *
 from bot.logic.facebook import Facebook
+from bot.logic.processor import Processor
 from bot.modelMappers.user import UserMapper
 
 
@@ -14,6 +15,7 @@ class Logic(object):
     def __init__(self):
         self.user = UserMapper()
         self.fb = Facebook()
+        self.processor = Processor()
 
     def get_all_users(self):
         u = self.user.get_all_users()
@@ -41,7 +43,7 @@ class Logic(object):
     def parse_message(self, user, messaging_event):
         self.fb.send_message_bubble(user.fb_id)
         if "quick_reply" in messaging_event["message"].keys():
-            self.process_quick_reply(user.fb_id, messaging_event[
+            self.process_quick_reply(user, messaging_event[
                                      "message"]["quick_reply"]["payload"])
         else:
             try:
@@ -51,9 +53,32 @@ class Logic(object):
                     user.fb_id, LIKE_MESSAGE.format(user.first_name))
             else:
                 if message_text.lower() == "anti jones":
-                    self.fb.send_message_text(user.fb_id, "Bentar ya bro")
+                    self.find_match(user)
                 else:
                     self.give_gombalan(user)
+
+    def find_match(self, user):
+        gender = user.gender
+
+        if gender == "male":
+            u = self.generate_match(self.processor.get_match_for_male)
+        elif gender == "female":
+            u = self.generate_match(self.processor.get_match_for_female)
+        else:
+            u = self.generate_match(self.processor.get_match_for_others)
+
+        if u:
+            self.fb.send_message_picture(user, u)
+        else:
+            self.fb.send_message_text(
+                user.fb_id, NOT_FOUND.format(user.first_name))
+
+    def generate_match(self, fn):
+        try:
+            u = fn()
+        except IndexError as err:
+            u = None
+        return u
 
     def give_gombalan(self, user):
         self.fb.send_message_text(user.fb_id, GOMBALAN_MESSAGE)
@@ -61,9 +86,16 @@ class Logic(object):
         word = random.choice(GOMBALAN)
         self.fb.send_message_text(user.fb_id, word)
         self.fb.send_message_text(user.fb_id, "Pake tuh mblo")
+        self.fb.send_message_text(
+            user.fb_id, "Kalo mau Om cariin jomblo laen, bilang 'anti jones' yak")
 
-    def process_quick_reply(self, sender_id, payload):
-        pass
+    def process_quick_reply(self, user, payload):
+        if payload == "Yes":
+            self.fb.send_message_text(user.fb_id, REQUEST_AGAIN)
+            self.find_match(user)
+        else:
+            self.fb.send_message_text(
+                user.fb_id, REQUEST_STOP.format(user.first_name))
 
     def find_user(self, fb_id):
         try:
