@@ -1,0 +1,18 @@
+/bin
+/include
+/lib
+
+# Windows
+/Include
+/Lib
+/Scripts
+/tcl
+
+__pycache__/
+
+pip-selfcheck.json
+*.pyc
+.coverage
+.idea/
+*.sublime-project
+*.sublime-workspace
