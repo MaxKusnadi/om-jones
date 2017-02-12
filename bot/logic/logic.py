@@ -3,6 +3,7 @@ import json
 import os
 import requests
 
+from bot.constants.messages import *
 from bot.logic.facebook import Facebook
 from bot.modelMappers.user import UserMapper
 
@@ -18,12 +19,10 @@ class Logic(object):
         return u
 
     def parse_messaging_event(self, messaging_event):
-        # the facebook ID of the person sending you the message
         sender_id = messaging_event["sender"]["id"]
-        # the recipient's ID, which should be your page's facebook ID
         recipient_id = messaging_event["recipient"]["id"]
         self.fb.send_message_bubble(sender_id)
-        user = self.store_user(sender_id)
+        user = self.find_user(sender_id)
         if messaging_event.get("message"):  # someone sent us a message
             self.parse_message(user, messaging_event)
 
@@ -35,7 +34,8 @@ class Logic(object):
 
         # user clicked/tapped "postback" button in earlier message
         if messaging_event.get("postback"):
-            pass
+            self.fb.send_message_text(
+                sender_id, WELCOME_MESSAGE.format(user.first_name))
 
     def parse_message(self, user, messaging_event):
         if "quick_reply" in messaging_event["message"].keys():
@@ -43,14 +43,13 @@ class Logic(object):
                                      "message"]["quick_reply"]["payload"])
         else:
             try:
-                message_text = messaging_event["message"][
-                    "text"]  # the message's text
+                message_text = messaging_event["message"]["text"]
             except KeyError:
                 self.fb.send_message_text(
-                    user.fb_id, "Thanks for the likes, {name}!".format(name=user.first_name))
+                    user.fb_id, LIKE_MESSAGE.format(name=user.first_name))
             else:
-                if message_text.lower() == "order":
-                    self.start_order(user.fb_id)
+                if message_text.lower() == "anti jones":
+                    self.fb.send_message_text(user.fb_id, "Bentar ya bro")
                 else:
                     self.fb.send_message_text(
                         user.fb_id, "Hi, {name}! You can order flower by typing 'order'! ".format(name=user.first_name))
@@ -58,7 +57,7 @@ class Logic(object):
     def process_quick_reply(self, sender_id, payload):
         pass
 
-    def store_user(self, fb_id):
+    def find_user(self, fb_id):
         try:
             u = self.user.get_user_by_fb_id(fb_id)
         except ValueError as err:
