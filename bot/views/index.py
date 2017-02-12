@@ -22,12 +22,7 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-
-    # endpoint for processing incoming messaging events
-
     data = request.get_json()
-    # you may not want to log every incoming message in production, but it's
-    # good for testing
     logging.debug(data)
 
     if data["object"] == "page":

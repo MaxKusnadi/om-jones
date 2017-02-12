@@ -46,7 +46,7 @@ class Logic(object):
                 message_text = messaging_event["message"]["text"]
             except KeyError:
                 self.fb.send_message_text(
-                    user.fb_id, LIKE_MESSAGE.format(name=user.first_name))
+                    user.fb_id, LIKE_MESSAGE.format(user.first_name))
             else:
                 if message_text.lower() == "anti jones":
                     self.fb.send_message_text(user.fb_id, "Bentar ya bro")
