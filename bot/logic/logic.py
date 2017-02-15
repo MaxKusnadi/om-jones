@@ -7,15 +7,18 @@ import random
 from bot.constants.messages import *
 from bot.logic.facebook import Facebook
 from bot.logic.processor import Processor
+from bot.logic.responseGenerator import ResponseGenerator
 from bot.modelMappers.user import UserMapper
+from bot.witai import client
 
 
 class Logic(object):
 
     def __init__(self):
         self.user = UserMapper()
-        self.fb = Facebook()
         self.processor = Processor()
+        self.wit = client
+        self.response = ResponseGenerator()
 
     def get_all_users(self):
         u = self.user.get_all_users()
@@ -28,20 +31,11 @@ class Logic(object):
         if messaging_event.get("message"):  # someone sent us a message
             self.parse_message(user, messaging_event)
 
-        if messaging_event.get("delivery"):  # delivery confirmation
-            pass
-
-        if messaging_event.get("optin"):  # optin confirmation
-            pass
-
         # user clicked/tapped "postback" button in earlier message
         if messaging_event.get("postback"):
-            self.fb.send_message_bubble(sender_id)
-            self.fb.send_message_text(
-                sender_id, WELCOME_MESSAGE.format(user.first_name))
+            self.response.welcome_message(user)
 
     def parse_message(self, user, messaging_event):
-        self.fb.send_message_bubble(user.fb_id)
         if "quick_reply" in messaging_event["message"].keys():
             self.process_quick_reply(user, messaging_event[
                                      "message"]["quick_reply"]["payload"])
@@ -49,13 +43,19 @@ class Logic(object):
             try:
                 message_text = messaging_event["message"]["text"]
             except KeyError:
-                self.fb.send_message_text(
-                    user.fb_id, LIKE_MESSAGE.format(user.first_name))
+                self.response.send_like(user)
             else:
                 if message_text.lower() == "anti jones":
-                    self.find_match(user)
+                    self.check_user_authorization(user)
                 else:
-                    self.give_gombalan(user)
+                    fn = self.process_with_wit(message_text)
+                    fn(user)
+
+    def check_user_authorization(self, user):
+        if user.is_authorized:
+            self.find_match(user)
+        else:
+            self.response.send_authorization(user)
 
     def find_match(self, user):
         gender = user.gender
@@ -68,10 +68,9 @@ class Logic(object):
             u = self.generate_match(self.processor.get_match_for_others)
 
         if u:
-            self.fb.send_message_picture(user, u)
+            self.response.send_match(user, u)
         else:
-            self.fb.send_message_text(
-                user.fb_id, NOT_FOUND.format(user.first_name))
+            self.response.match_not_found(user)
 
     def generate_match(self, fn):
         try:
@@ -80,27 +79,62 @@ class Logic(object):
             u = None
         return u
 
-    def give_gombalan(self, user):
-        self.fb.send_message_text(user.fb_id, GOMBALAN_MESSAGE)
-        self.fb.send_message_bubble(user.fb_id)
-        word = random.choice(GOMBALAN)
-        self.fb.send_message_text(user.fb_id, word)
-        self.fb.send_message_text(
-            user.fb_id, "Kalo mau Om cariin jomblo laen, bilang 'anti jones' yak")
-
     def process_quick_reply(self, user, payload):
         if payload == "Yes":
-            self.fb.send_message_text(user.fb_id, REQUEST_AGAIN)
+            self.response.send_match_again(user)
             self.find_match(user)
+        elif payload == "No":
+            self.response.stop_send_match(user)
+        elif payload == "Authorized":
+            self.user.update_user_authorization(user.fb_id, True)
+            self.response.send_match_again(user)
+            self.find_match(user)
+        elif payload == "gombal_lagi":
+            self.response.gombal(user)
+        elif payload == "gombal_stop":
+            self.response.farewell(user)
         else:
-            self.fb.send_message_text(
-                user.fb_id, REQUEST_STOP.format(user.first_name))
+            self.response.not_authorized(user)
 
     def find_user(self, fb_id):
         try:
             u = self.user.get_user_by_fb_id(fb_id)
         except ValueError as err:
             logging.error(err)
-            first_name, last_name, gender, pic = self.fb.get_user_data(fb_id)
+            first_name, last_name, gender, pic = self.response.get_user_data(
+                user)
             u = self.user.create_user(fb_id, first_name, last_name, gender)
         return u
+
+    def process_with_wit(self, message):
+        resp = self.wit.message(message)
+        entity, value = self.parse_wit(resp)
+
+        if entity == 'laugh':
+            return self.response.laugh
+        elif entity == 'thank':
+            return self.response.thank
+        elif entity == 'gombal':
+            return self.response.gombal
+        elif entity == 'intent':
+            if value == "greeting":
+                return self.response.greeting
+            else:
+                return self.response.farewell
+        else:
+            return self.response.command_not_found
+
+    def parse_wit(self, resp):
+        resp_entity = resp['entities']
+        entities = ['thank', 'intent', 'gombal', 'laugh']
+        best_entity = None
+        best_accuracy = 0
+        best_value = None
+        for en in entities:
+            if en in resp_entity:
+                accuracy = resp_entity[en][0]['confidence']
+                if accuracy >= 0.8 and accuracy >= best_accuracy:
+                    best_entity = en
+                    best_accuracy = accuracy
+                    best_value = resp_entity[en][0]['value']
+        return (best_entity, best_value)

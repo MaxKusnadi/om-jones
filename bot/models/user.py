@@ -13,7 +13,7 @@ class User(db.Model):
     gender = Column(String)
     is_authorized = Column(Boolean)
 
-    def __init__(self, fb_id, first_name, last_name, gender, is_authorized=True):
+    def __init__(self, fb_id, first_name, last_name, gender, is_authorized=False):
         self.fb_id = fb_id
         self.first_name = first_name
         self.last_name = last_name

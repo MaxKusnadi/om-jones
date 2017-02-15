@@ -1,9 +1,76 @@
-WELCOME_MESSAGE = "Halo, jombloer {}! Mau Oom cariin jomblo yang cocok buat kamu? Bilang aja 'Anti jones'. Kalo ga kamu bisa dengerin gombalan jomblo dari Om juga"
-LIKE_MESSAGE = "Masa like Om sih {}? Like yang lain dong"
-GOMBALAN_MESSAGE = "Ngomong paan sih lu? Nih gombalan buat lu, mblo."
+WELCOME_MESSAGE = "Halo, jombloer {}! Om bisa gombal ato cariin kamu jodoh. Buat cari jodoh bilang aja ANTI JONES"
+
+LIKE_MESSAGE = ["Masa like Om sih {}? Like yang lain dong",
+                "Hahaha thank you likenya! {}",
+                "Kamu beraninya like Om aja nih. Yang lain berani ga {}?",
+                "Woke woke sep sep {}",
+                "Jempol doang, hati kamu mana, {}"]
+
 NOT_FOUND = "Yah mblo ga ada yang cocok ma lu nih. Tanya Om lagi ntaran aja ya, {}"
-REQUEST_AGAIN = "Bentar ye mblo"
-REQUEST_STOP = "Udahan ya mblo? Kalo mau lanjut bilang 'anti jones' yak {}"
+
+REQUEST_AGAIN = ["Bentar ye mblo",
+                 "Sabar mblo",
+                 "Ok siaaap",
+                 "Om cari dulu ya",
+                 "Ok boss",
+                 "Ok sep. Om cari dulu ya",
+                 "k sabar"]
+
+REQUEST_STOP = ["Udahan ya mblo? Kalo mau lanjut bilang 'anti jones' yak {}",
+                "Cepet amat bro {}",
+                "Semoga kamu terinspirasi ya {}",
+                "Jangan lupain om ya. Mampir lagi kapan-kapan {}",
+                "Sep deh {}"]
+
+LAUGH = ["haha",
+         "lol",
+         "lel",
+         "hahahaha",
+         "Jangan ketawa gitu dong. Terlalu manis ntar",
+         "wkwk",
+         "hehehe",
+         "hhaha"]
+
+THANK = ["Sama sama",
+         "You're welcome",
+         "Thank you juga hehe",
+         "Masa thank you doang sih",
+         "Sep sep",
+         "No problem",
+         "np"]
+
+GREETING = ["Hallo! Om bisa gombal loh",
+            "Holla :)",
+            "Hey hey mblo. Suruh Om gombal deh",
+            "Sup mblo",
+            "Wazzzup",
+            "Ni hao ma",
+            "Hanyong",
+            "Sup. Bilang 'ANTI JONES' buat dicariin jodoh",
+            "Yah elu lagi",
+            "Another jomblo detected",
+            "Jomblo +1"]
+
+FAREWELL = ["Cepet amat mblo",
+            "Byeeee",
+            "See you again",
+            "Dadahh",
+            "Good bye mblo",
+            "Farewelll",
+            "Sampe ketemu lagi mblo",
+            "c u",
+            "See you again"]
+
+COMMAND_NOT_FOUND = ["Maap nih mblo, Om kaga ngerti maksud lu",
+                     "Maksud lu apa mblo?",
+                     "Aduh Om ga ngerti km ngmong apa. Yang buat Om bego mblo",
+                     "Kamsudnya apa mblo. Suruh Om gombal aja",
+                     "Yang buat Om ga begitu pinter mblo. Om ga ngerti maksud lu"]
+
+NOT_AUTHORIZED = ["Yah... Ok deh Om masih bisa ngegombal kok",
+                  "Ok deh.. Om masih gombalin sih",
+                  "Hmm oke.. Om masih bisa gombalin km kok",
+                  "Yah mblo gimana seh"]
 
 GOMBALAN = [
     "Senyuman kamu tuh ibarat SUSU BENDERA nikmat nya hingga tetes terakhir sayaang :)",
