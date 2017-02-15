@@ -29,16 +29,18 @@ class UserMapper(object):
         return users
 
     def get_all_males(self):
-        users = User.query.filter(User.gender == "male")
+        users = User.query.filter(
+            and_(User.gender == "male", User.is_authorized))
         return users
 
     def get_all_females(self):
-        users = User.query.filter(User.gender == "female")
+        users = User.query.filter(
+            and_(User.gender == "female", User.is_authorized))
         return users
 
     def get_other_genders(self):
-        users = User.query.filter(and_(User.gender != "male",
-                                       User.gender != "female"))
+        users = User.query.filter(and_(and_(User.gender != "male", User.is_authorized),
+                                       and_(User.gender != "female", User.is_authorized)))
         return users
 
     # Update
