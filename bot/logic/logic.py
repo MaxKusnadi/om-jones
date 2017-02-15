@@ -102,7 +102,7 @@ class Logic(object):
         except ValueError as err:
             logging.error(err)
             first_name, last_name, gender, pic = self.response.get_user_data(
-                user)
+                fb_id)
             u = self.user.create_user(fb_id, first_name, last_name, gender)
         return u
 

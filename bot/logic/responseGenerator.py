@@ -62,7 +62,7 @@ class ResponseGenerator(object):
         self.fb.send_message_text(
             user.fb_id, self.choose_response(REQUEST_STOP).format(user.first_name))
 
-    def get_user_data(self, user):
+    def get_user_data(self, fb_id):
         return self.fb.get_user_data(fb_id)
 
     def not_authorized(self, user):
