@@ -1,4 +1,4 @@
-WELCOME_MESSAGE = "Halo, jombloer {}! Om bisa gombal ato cariin kamu jodoh. Buat cari jodoh bilang aja ANTI JONES"
+WELCOME_MESSAGE = "Halo, jombloer {}! Om bisa gombal ato cariin kamu jodoh. Buat cari jodoh bilang aja ANTI JONES. Kalau mau gombal, tinggal minta om gombalin aja"
 
 LIKE_MESSAGE = ["Masa like Om sih {}? Like yang lain dong",
                 "Hahaha thank you likenya! {}",
@@ -197,245 +197,108 @@ GOMBALAN = [
     "I was wondering if you had an extra heart mine seems to have been stolen",
     "I thought happiness started with an H. Why does mine start with U?",
     "If I were a cat I'd spend all 9 lives with you.",
-    "Do you work at Starbucks? Because I like you a latte."
+    "Do you work at Starbucks? Because I like you a latte.",
+    "Are you a banana? Because I find you a - peeling",
+    "Did you read Dr. Seuss as a kid? Because green eggs and... damn!",
+    "Is your dad a drug dealer? Cause you're so Dope!",
+    "Smoking is hazardous to your health... and baby, you're killing me!",
+    "There isn't a word in the dictionary for how good you look.",
+    "Me without you is like a nerd without braces, A shoe without laces, aSentenceWithoutSpaces",
+    "Babe, your beauty makes the morning sun look like the dull glimmer of the moon.",
+    "Most people like to watch the Olympics, because they only happen once",
+    "Every 4 years, but I'd rather talk to you cause the chance of meeting someone so special only happens once in a lifetime.",
+    "If I’m vinegar, then you must be baking soda. Because you make me feel all bubbly inside!",
+    "You must be the cure for Alzheimer’s, because you’re unforgettable.",
+    "I know where they give out free drinks... it’s a place called “My House”!",
+    "I’m in the mood for pizza... a pizza you, that is!",
+    "I was so content with my life and one day I asked God, what could be better than this? And then I met you.",
+    "Are you from Tennessee? Because you're the only ten I see!",
+    "I must be a snowflake, because I've fallen for you.",
+    "There is something wrong with my cell phone. It doesn't have your number in it.",
+    "Baby, if you were words on a page, you'd be what they call FINE PRINT!",
+    "Do you work at Dick's? Cause you're sporting the goods.",
+    "You must be a hell of a thief because you stole my heart from across the room.",
+    "Do you have a twin sister? Then you must be the most beautiful girl in the world!",
+    "You know I'd like to invite you over, but I'm afraid you're so hot that you'll skyrocket my air - conditioning bill.",
+    "Excuse me, but I think I dropped something. MY JAW!",
+    "If you were a booger I'd pick you first.",
+    "Do you know what I did last night? I looked up at the stars, and matched each one with a reason why I love you.",
+    "Excuse me, I think you have something in your eye. Oh wait, it's just a sparkle.",
+    "If I were to ask you out on a date, would your answer be the same as the answer to this question?",
+    "If this bar is a meat market, you must be the prime rib.",
+    "Are you lost ma'am? Because heaven is a long way from here.",
+    "I'm fighting the urge to make you the happiest woman on earth tonight.",
+    "Are you a campfire? Cause you are hot and I want s'more.",
+    "You're kinda, sorta, basically, pretty much always on my mind.",
+    "Put down that cupake... you're sweet enough already.",
+    "You wanna know what's beautiful? Read the first word again.",
+    "My love for you is like diarrhea, I just can't hold it in.",
+    "Hello, I'm a thief, and I'm here to steal your heart.",
+    "Hey baby you're so fine you make me stutter, wha-wha-what's your name?",
+    "I bet you $20 you're gonna turn me down.",
+    "I'm not actually this tall. I'm sitting on my wallet.",
+    "When I first saw you I looked for a signature, because every masterpiece has one.",
+    "I like Legos, you like Legos, why don't we build a relationship?",
+    "Baby I might not be Sriracha sauce but, I sure will spice up your life.",
+    "Are you Jewish? Cause you ISRAELI HOT.",
+    "You may be asked to leave soon, you're making all the other women look bad.",
+    "Do you have the time? [Tells you the time] No, the time to write down my number?",
+    "Would you grab my arm so I can tell my friends I've been touched by an angel?",
+    "Hey... Didn't I see your name in the dictionary under 'Shazaam!'?",
+    "Are you African? Because you're a frican babe.",
+    "There's only one thing I want to change about you, and that's your last name.",
+    "If a thousand painters worked for a thousand years, they could not create a work of art as beautiful as you.",
+    "Rejection can lead to emotional stress for both parties involved and emotional stress can lead to physical complications such as headaches, ulcers, cancerous tumors, and even death! So for my health and yours, JUST SAY YES!",
+    "Of all the beautiful curves on your body, your smile is my favorite.",
+    "Did you have lucky charms for breakfast? Because you look magically delicious!",
+    "No wonder the sky is grey today, all the blue is in your eyes.",
+    "Can I borrow your cell phone? I need to call animal control, because I just saw a fox!",
+    "I'm no organ donor but I'd be happy to give you my heart.",
+    "If I had a penny for every time I thought of you, I'd have exactly one cent, because you never leave my mind.",
+    "Hershey's makes millions of kisses a day.. .all I'm asking for is one from you.",
+    "Life without you would be like a broken pencil... pointless.",
+    "I may not be a genie, but I can make your dreams come true.",
+    "Kiss me if I'm wrong, but dinosaurs still exist, right?",
+    "If I received a nickel for everytime I saw someone as beautiful as you, I'd have five cents.",
+    "If nothing lasts forever, will you be my nothing?",
+    "Hello are you married? [Yes] Well I didn't hear you say 'happily'.",
+    "You are like a candy bar: half sweet and half nuts.",
+    "Excuse me, but does this smell like chloroform to you?",
+    "Hello how are you? [Fine] Hey, I didn't ask you how you looked!",
+    "Did you clean your pants with Windex? I can practically see myself in them.",
+    "How was heaven when you left it?",
+    "Did you fart, cause you blew me away.",
+    "You know you're in love when you can't fall asleep because reality is finally better than your dreams.",
+    "Hey... somebody farted. Let's get out of here.",
+    "I didn't know that angels could fly so low!",
+    "There must be something wrong with my eyes, I can't take them off you.",
+    "You are so fine, I wish I could plant you and grow a whole field of you!",
+    "Is your last name Gillette? Because you are the best a man can get.",
+    "Is your name 'swiffer'? Cause you just swept me off my feet.",
+    "'Excuse me, but you dropped something back there' (What?) 'This conversation, lets pick it up later tonight.'",
+    "Are you going to kiss me or do I have to lie to my diary?",
+    "Are you cold? You look like you could use some hot chocolate... Well, here I am!",
+    "If stars would fall everytime I would think of you, the sky would soon be empty.",
+    "You know, Dr. Phil says I'm afraid of commitment...Want to help prove him wrong?",
+    "Your lips look so lonely.... Would they like to meet mine?",
+    "Baby, you're so sweet, you put Hershey's outta business.",
+    "Can I buy you a drink or do you just want the money?",
+    "Did the sun come out or did you just smile at me?",
+    "So there you are! I've been looking all over for YOU, the woman of my dreams!",
+    "Do you believe in love at first sight, or should I walk by again?",
+    "Inheriting eighty million bucks doesn't mean much when you have a weak heart.",
+    "You see my friend over there? [Point to friend] He wants to know if YOU think I'M cute.",
+    "The only thing your eyes haven't told me is your name.",
+    "Excuse me, I just noticed you noticing me and I just wanted to give you notice that I noticed you too.",
+    "(As she is leaving) Hey aren't you forgetting something? (What?) Me!",
+    "Somebody better call God, cuz heaven's missing an angel!",
+    "Can I borrow a quarter? ['What for?'] I want to call my mom and tell her I just met the man / woman of my dreams.",
+    "I'm Mr. Right, someone said you were looking for me?",
+    "Can I borrow a kiss? I promise I'll give it back.",
+    "If I were a transplant surgeon, I'd give you my heart.",
+    "Are you Willy Wonka's daughter, 'cuz you look sweet and delicious.",
+    "If you were a transformer, you'd be a HOT - obot, and your name would be Optimus Fine."
 ]
-
-# Are you a banana? Because I find you a - peeling
-
-# Did you read Dr. Seuss as a kid? Because green eggs and... damn!
-
-# Is your dad a drug dealer? Cause you're so Dope!
-
-# Smoking is hazardous to your health... and baby, you're killing me!
-
-# There isn't a word in the dictionary for how good you look.
-
-# Me without you is like a nerd without braces, A shoe without laces,
-# aSentenceWithoutSpaces
-
-# Babe, your beauty makes the morning sun look like the dull glimmer of
-# the moon.
-
-# Most people like to watch the Olympics, because they only happen once
-# every 4 years, but I'd rather talk to you cause the chance of meeting
-# someone so special only happens once in a lifetime.
-
-# If I’m vinegar, then you must be baking soda. Because you make me feel
-# all bubbly inside!
-
-# You must be the cure for Alzheimer’s, because you’re unforgettable.
-
-# I know where they give out free drinks... it’s a place called “My House”!
-
-# I’m in the mood for pizza... a pizza you, that is!
-
-# I was so content with my life and one day I asked God, what could be
-# better than this? And then I met you.
-
-# Are you from Tennessee? Because you're the only ten I see!
-
-# I must be a snowflake, because I've fallen for you.
-
-# There is something wrong with my cell phone. It doesn't have your number
-# in it.
-
-# Baby, if you were words on a page, you'd be what they call FINE PRINT!
-
-# Do you work at Dick's? Cause you're sporting the goods.
-
-# You must be a hell of a thief because you stole my heart from across the
-# room.
-
-# Do you have a twin sister? Then you must be the most beautiful girl in
-# the world!
-
-# You know I'd like to invite you over, but I'm afraid you're so hot that
-# you'll skyrocket my air - conditioning bill.
-
-# Excuse me, but I think I dropped something. MY JAW!
-
-# If you were a booger I'd pick you first.
-
-# Do you know what I did last night? I looked up at the stars, and matched
-# each one with a reason why I love you.
-
-# Excuse me, I think you have something in your eye. Oh wait, it's just a
-# sparkle.
-
-# If I were to ask you out on a date, would your answer be the same as the
-# answer to this question?
-
-# If this bar is a meat market, you must be the prime rib.
-
-# Are you lost ma'am? Because heaven is a long way from here.
-
-# I'm fighting the urge to make you the happiest woman on earth tonight.
-
-# Are you a campfire? Cause you are hot and I want s'more.
-
-# You're kinda, sorta, basically, pretty much always on my mind.
-
-# Put down that cupake... you're sweet enough already.
-
-# You wanna know what's beautiful? Read the first word again.
-
-# My love for you is like diarrhea, I just can't hold it in.
-
-# Hello, I'm a thief, and I'm here to steal your heart.
-
-# Hey baby you're so fine you make me stutter, wha-wha-what's your name?
-
-# I bet you $20 you're gonna turn me down.
-
-# I'm not actually this tall. I'm sitting on my wallet.
-
-# When I first saw you I looked for a signature, because every masterpiece
-# has one.
-
-# I like Legos, you like Legos, why don't we build a relationship?
-
-# Baby I might not be Sriracha sauce but, I sure will spice up your life.
-
-# Are you Jewish? Cause you ISRAELI HOT.
-
-# You may be asked to leave soon, you're making all the other women look
-# bad.
-
-# Do you have the time? [Tells you the time] No, the time to write down my
-# number?
-
-# Would you grab my arm so I can tell my friends I've been touched by an
-# angel?
-
-# Hey... Didn't I see your name in the dictionary under "Shazaam!"?
-
-# Are you African? Because you're a frican babe.
-
-# There's only one thing I want to change about you, and that's your last
-# name.
-
-# If a thousand painters worked for a thousand years, they could not
-# create a work of art as beautiful as you.
-
-# Rejection can lead to emotional stress for both parties involved and
-# emotional stress can lead to physical complications such as headaches,
-# ulcers, cancerous tumors, and even death! So for my health and yours,
-# JUST SAY YES!
-
-# Of all the beautiful curves on your body, your smile is my favorite.
-
-# Did you have lucky charms for breakfast? Because you look magically
-# delicious!
-
-# No wonder the sky is grey today, all the blue is in your eyes.
-
-# Can I borrow your cell phone? I need to call animal control, because I
-# just saw a fox!
-
-# I'm no organ donor but I'd be happy to give you my heart.
-
-# If I had a penny for every time I thought of you, I'd have exactly one
-# cent, because you never leave my mind.
-
-# Hershey's makes millions of kisses a day.. .all I'm asking for is one
-# from you.
-
-# Life without you would be like a broken pencil... pointless.
-
-# I may not be a genie, but I can make your dreams come true.
-
-# Kiss me if I'm wrong, but dinosaurs still exist, right?
-
-# If I received a nickel for everytime I saw someone as beautiful as you,
-# I'd have five cents.
-
-# If nothing lasts forever, will you be my nothing?
-
-# Hello are you married? [Yes] Well I didn't hear you say "happily".
-
-# You are like a candy bar: half sweet and half nuts.
-
-# Excuse me, but does this smell like chloroform to you?
-
-# Hello how are you? [Fine] Hey, I didn't ask you how you looked!
-
-# Did you clean your pants with Windex? I can practically see myself in
-# them.
-
-# How was heaven when you left it?
-
-# Did you fart, cause you blew me away.
-
-# You know you're in love when you can't fall asleep because reality is
-# finally better than your dreams.
-
-# Hey... somebody farted. Let's get out of here.
-
-# I didn't know that angels could fly so low!
-
-# There must be something wrong with my eyes, I can't take them off you.
-
-# You are so fine, I wish I could plant you and grow a whole field of you!
-
-# Is your last name Gillette? Because you are the best a man can get.
-
-# Is your name "swiffer"? 'Cause you just swept me off my feet.
-
-# Excuse me, but you dropped something back there" (What?) "This
-# conversation, lets pick it up later tonight.
-
-# Are you going to kiss me or do I have to lie to my diary?
-
-# Are you cold? You look like you could use some hot chocolate... Well,
-# here I am!
-
-# If stars would fall everytime I would think of you, the sky would soon
-# be empty.
-
-# You know, Dr. Phil says I'm afraid of commitment...Want to help prove
-# him wrong?
-
-# Your lips look so lonely.... Would they like to meet mine?
-
-# Baby, you're so sweet, you put Hershey's outta business.
-
-# Can I buy you a drink or do you just want the money?
-
-# Did the sun come out or did you just smile at me?
-
-# So there you are! I've been looking all over for YOU, the woman of my
-# dreams!
-
-# Do you believe in love at first sight, or should I walk by again?
-
-# Inheriting eighty million bucks doesn't mean much when you have a weak
-# heart.
-
-# You see my friend over there? [Point to friend] He wants to know if YOU
-# think I'M cute.
-
-# The only thing your eyes haven't told me is your name.
-
-# Excuse me, I just noticed you noticing me and I just wanted to give you
-# notice that I noticed you too.
-
-# (As she is leaving) Hey aren't you forgetting something? (What?) Me!
-
-# Somebody better call God, cuz heaven's missing an angel!
-
-# Can I borrow a quarter? ["What for?"] I want to call my mom and tell her
-# I just met the man / woman of my dreams.
-
-# I'm Mr. Right, someone said you were looking for me?
-
-# Can I borrow a kiss? I promise I'll give it back.
-
-# If I were a transplant surgeon, I'd give you my heart.
-
-# Are you Willy Wonka's daughter, 'cuz you look sweet and delicious.
-
-# If you were a transformer, you'd be a HOT - obot, and your name would be
-# Optimus Fine.
 
 # Do you remember me? [No.] Oh that's right, we've only met in my dreams.
 
