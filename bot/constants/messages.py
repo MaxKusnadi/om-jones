@@ -138,6 +138,7 @@ GOMBALAN = [
     "Jangan mengatakan hal-hal indah di depanku karna bagiku kamulah yg paling indah.",
     "Apa persamaan hati aku dengan rumah? sama-sama untuk kamu tempati.",
     "Tadi malam aku kirim bidadari untuk menjaga tidurmu. Eh, dia buru-buru balik. Katanya, 'Ah, masa bidadari disuruh jaga bidadari?",
+    << << << < HEAD
     "Ga usah janjiin bintang dan bulan untuk aku, cukup janjiin kamu bakal selalu bersamaku di bawah cahayanya."
     # "Are you a magician? Because whenever I look at you, everyone else disappears!",
     # "I'm not a photographer, but I can picture me and you together.",
